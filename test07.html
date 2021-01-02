@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <div id="app">
+        <h1>{{ counter }}</h1>
+        <button @click="countUp">+1</button>
+        <button @click="countUp()">+1</button>
+        <p>{{ doubleCounterComputed }}</p>
+        <p>{{ doubleCounterMethod() }}</p>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                counter: 0,
+            },
+            computed: {
+                doubleCounterComputed: function() {
+                    return this.counter * 2;
+                }
+            },
+            methods: {
+                countUp: function(){
+                    this.counter += 1;
+                },
+                doubleCounterMethod: function() {
+                    return this.counter * 2;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
