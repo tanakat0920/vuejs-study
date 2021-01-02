@@ -1,0 +1,40 @@
+<!-- クラスのバインディング -->
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="sample.css">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <div id="app">
+        <h1 :class="{ red: isActive, 'bg-blue': !isActive}"> Hallo </h1>
+        <button @click="isActive = !isActive">切り替え</button>
+        <h1 :class="cssClassObj"> Hallo-computed </h1>
+        <h1 :class="[color, bg]"> Hallo-動的記述 </h1>
+
+        
+    </div>
+    
+    <script>
+        new Vue ({
+            el: '#app',
+        data: {
+            isActive: true,
+            color: 'red',
+            bg: 'bg-blue'
+        },
+        computed: {
+            cssClassObj: 
+                function(){
+                    return { red: this.isActive, 'bg-blue': !this.isActive }
+            }
+        }
+        })
+    </script>
+    
+</body>
+</html>
