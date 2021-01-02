@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script> -->
+    <script src="vue.js"></script>
+
+    <div id="app">
+        <p v-once>{{message}}</p>
+        <p v-text="message"></p>
+        <p>{{ number + 5 }}</p>
+        <p>{{ ok ? 'Yes' : 'No' }}</p>
+        <p>{{ sayHi() }}</p>
+        <button v-on:click="reverseMessage">メッセージ反転</button>
+        <div>{{ html }}</div>
+        <div v-html="html"></div>
+        <a v-bind:href="url">Google</a>
+        <a :href="url">v-bindは省略できる</a>
+        <a :[attribute]="url">属性は各カッコで指定できる←v-bind</a>
+        <a :href="urlTwitter" :id="numbers">twitter</a>
+        <a v-bind="{href: urlTwitter, id: numbers}">v-bindはオブジェクト形式でも書ける！</a>
+        <a v-bind="yahooObj">オブジェクトをｊｓ側に持たせる</a>
+    </div>
+
+    <script> 
+        new Vue({
+        el: '#app',
+        data: {
+            message : 'hello world vue!',
+        number: 3,
+        ok: false,
+        html: '<h1>h1です</h1>',
+        url: 'https://google.com/',
+        urlTwitter: 'https://twitter.com/',
+        numbers: 31,
+        attribute: 'href',
+        yahooObj: {
+            href: 'https://www.yahoo.co.jp',
+            id: 44
+        }
+        },
+        methods: {
+            reverseMessage: function() {
+            this.message = this.message.split('').reverse().join('')
+            },
+        sayHi: function() {
+            this.message = 'vuevue!'
+                return this.message + ' sayHi!';
+        }
+        }
+        })
+    </script>
+</body>
+</html>

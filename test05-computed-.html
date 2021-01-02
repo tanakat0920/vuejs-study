@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <div id="app">
+        <h1>{{ counter }}</h1>
+        <button @click="counter += 1">+1</button>
+        <p>{{ lessThanThreeComputed }}</p>
+        <p>{{ lessThanThreeMethods() }}</p>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                counter: 0,
+            },
+            computed: {
+                lessThanThreeComputed: function() {
+                    return this.counter > 3 ? '3以上です' : '3以下です'
+                }
+            },
+            methods: {
+                lessThanThreeMethods: function() {
+                    return this.counter > 3 ? '3以上です' : '3以下です'
+                }
+            }
+        })
+    </script>
+</body>
+</html>

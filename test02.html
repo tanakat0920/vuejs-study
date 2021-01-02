@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <div id="app">
+        <p>現在　{{ number }}　回クリックされています</p>
+        <button v-on:click="number += 1">カウントアップ</button>
+        <button v-on:click="countUp(3)">function カウントアップ</button>
+        <p v-on:mousemove="changeMousePosition(3, $event)">マウスを載せてください
+            <!-- <span v-on:mousemove="noEvent">反応しないです</span> -->
+            <span v-on:mousemove.stop>反応しないです</span>
+        </p>
+        <!-- <a v-on:click="noEvent" href="https://google.co.jp">google</a> -->
+        <a v-on:click.prevent href="https://google.co.jp">google</a>
+        <p>x: {{x}} , y: {{ y }}</p>
+        <input type="text" v-on:keyup.space="myAlert">
+    </div>
+    <script>
+        new Vue ({
+            el: '#app',
+            data: {
+                number: 0,
+                x: 0,
+                y: 0
+            },
+            methods: {
+                countUp: function (times) {
+                    this.number += 1 * times;
+                },
+                changeMousePosition: function(divideNumber, event) {
+                    // console.log(event);
+                    this.x = event.clientX / divideNumber;
+                    this.y = event.clientY / divideNumber;
+                },
+                noEvent: function(evemt) {
+                    // event.stopPropagation();
+                    event.preventDefault();
+                },
+                myAlert() {
+                    alert('アラート')
+                }
+            }
+        })
+    </script>
+</body>
+</html>
