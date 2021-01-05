@@ -11,8 +11,14 @@
         <p v-html>{{message}}</p>
         <input type="text" v-model="message" v-on:keyup.space="myAlert">
         <!-- インラインスタイル -->
-        <h1 style="color:red; background-color: blue;">これはテストです</h1>
-        <h1 :style="{color: textColor, 'background-color': bgColor}">これはテストです</h1>
+        <h1 style="color:red; background-color: blue;">これはインラインスタイルテストです</h1>
+        <!-- 動的に生成 -->
+        <h1 :style="{color: textColor, 'background-color': bgColor}">これは動的に作成テストです</h1>
+        <!-- データから生成 -->
+        <h1 :style="styleObj">これはdataから作成テストです</h1>
+        <!-- 配列 -->
+        <h1 :style="[baseStyles, styleObj]">これは配列で生成するテストです</h1>
+
     </div>
     <script>
         new Vue({
@@ -20,7 +26,11 @@
             data: {
                 message: 'hello',
                 textColor: 'red',
-                bgColor: 'blue'
+                bgColor: 'blue',
+                styleObj: {color: 'yellow', 'background-color': 'black'},
+                baseStyles: {
+                    fontSize: '72px'
+                }
             },
             methods: {
                 myAlert() {

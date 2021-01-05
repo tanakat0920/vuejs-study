@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <div id="app">
+        <p>{{message}}</p>
+        <p v-if="ok">OK!</p>
+        <p v-else-if="maybeOk">may be ok</p>
+        <p v-else-if="maybeOK2">may be ok2</p>
+        <p v-else>not ok</p>
+        <button @click="ok = !ok">ok reverse</button>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                message: 'hello',
+                ok: false,
+                maybeOk: true,
+                maybeOK2: true,
+            }
+        })
+    </script>
+</body>
+</html>
