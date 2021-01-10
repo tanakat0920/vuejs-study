@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+
+    <div id="app">
+        <p>{{message}}</p>
+        <p>{{name}}</p>
+        <p>{{myData}}</p>
+        <button @click="message = 'ボタンから変更'">変更</button>
+    </div>
+
+    <div id="app2">
+        <!-- テンプレートプロパティを使う -->
+    </div>
+
+    <div id="app3">
+        <!-- レンダー関数を使う -->
+    </div>
+    
+    <div id="app4">
+        <!-- ライフサイクル -->
+        <h1>こんにちは</h1>
+    </div>
+
+    <!-- /////////////////////// -->
+
+    <script>
+        // vue1-------------
+        const vm = new Vue({
+        // $mout 実験
+            data: {
+                message: 'hello',
+                name: 'デグレチャフ!'
+            },
+            computed: {
+                myData: function () {
+                    return this.$data;
+                }
+            }
+        })
+        vm.$mount('#app')
+
+
+        // vue2------テンプレート構文-------
+        new Vue({
+            // el: '#app2',
+            data: {
+                name: 'デグレチャフ'
+            },
+            template: '<h1>こんちわ{{name}}</h1>'
+
+        }).$mount('#app2')
+
+
+        // vue3----レンダー関数---------
+        new Vue({
+            // el: '#app2',
+            data: {
+                name: 'デグレチャフ2'
+            },
+            // createElementではなくて「ｈ」とかでもよい
+            render: function(createElement) {
+                console.log(createElement('h1', 'こんにちは！、' + this.name));
+                return createElement('h1', 'こんにちは！、' + this.name);
+            }
+        }).$mount('#app3')
+
+        // これもDOM要素だが、上のVue３とは根本的に違う
+        const dir = document.createElement('div');
+        console.log(dir);
+        console.dir(dir);
+
+        console.log(document); //documentのなかみをみてみる
+        console.dir(document);
+
+
+
+
+        
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <div id="app">
+        <p>{{message}}</p>
+        <p>{{name}}</p>
+        <button @click="message = 'ボタンから変更'">変更</button>
+    </div>
+
+    <script>
+        const daa = {
+            message: 'test2',
+            name: 'デグレチャフ2'
+        }
+        const vm = new Vue({
+            el: '#app',
+            data: daa
+        })
+        // vm.message = 'changed!'
+        // vm.name = 'aaaaaa!'
+        
+        // undefinedになる
+        // console.log(vm.data)
+        // ならない
+        console.log(vm.$data);
+
+        // 外部のオブジェクトをdata内にいれることもできる
+        console.log(daa === vm.$data);
+        
+    </script>
+</body>
+</html>
