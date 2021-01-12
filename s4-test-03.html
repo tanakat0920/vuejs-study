@@ -28,11 +28,21 @@
         <h1>よろしくお願いします！{{name}}</h1>
         <button @click="name = 'ターニャ'">名前を変更</button>
         <button @click="destroy">インスタンスを破壊</button>
+        
+        <!-- コンポーネントを使い回す -->
+        <hello></hello>
+        <hello></hello>
+        <hello></hello>
     </div>
 
     <!-- /////////////////////// -->
 
     <script>
+        // コンポーネント
+        Vue.component('hello', {
+            template: '<p>コンポーネントです</p>'
+        });
+
         // vue1-------------
         const vm = new Vue({
         // $mout 実験
@@ -47,7 +57,6 @@
             }
         })
         vm.$mount('#app')
-
 
         // vue2------テンプレート構文-------
         new Vue({
