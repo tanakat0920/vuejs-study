@@ -15,13 +15,26 @@
 
 
     <script>
+        // データを共有する場合
+        const data = {
+            number: 12
+        } 
+
         Vue.component('my-component', {
             data: function(){
+                // データを共有する場合
+                // return data;
+                // データを共有しない場合（関数にするまっとうな方法）
                 return {
-                    number: 12
+                    number:12
                 }
             },
-            template: '<p>いいね{{number}}</p>'
+            template: '<p>いいね{{number}}<button @click="increment1">+1</button></p>',
+            methods: {
+                increment1: function() {
+                    this.number += 1;
+                }
+            }
         })
 
         new Vue({
