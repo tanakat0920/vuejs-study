@@ -12,6 +12,7 @@
         <my-component></my-component>
         <my-component></my-component>
     </div>
+    <hr>
     <div id="app2">
         <my-component></my-component>
         <my-component></my-component>
@@ -21,11 +22,7 @@
 
     <script>
         // データを共有する場合
-        const data = {
-            number: 12
-        } 
-
-        Vue.component('my-component', {
+        const component = {
             data: function(){
                 // データを共有する場合
                 // return data;
@@ -40,10 +37,13 @@
                     this.number += 1;
                 }
             }
-        })
+        }
 
         new Vue({
             el: '#app',
+            components: {
+                'my-component': component
+            }
         })
 
         new Vue({
